@@ -33,6 +33,7 @@
  * -# @subpage date
  * -# @subpage exit
  * -# @subpage md5
+ * -# @subpage sha1
  */
 
 #ifndef _LIB_LIB_H
@@ -43,5 +44,6 @@
 #include "lib_date.h"
 #include "lib_exit.h"
 #include "lib_md5.h"
+#include "lib_sha1.h"
 
 #endif /* _LIB_LIB_H */
