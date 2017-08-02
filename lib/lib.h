@@ -29,11 +29,13 @@
  * library, but none depends on source from outside.
  *
  * -# @subpage ascii
+ * -# @subpage base64
  */
 
 #ifndef _LIB_LIB_H
 #define _LIB_LIB_H
 
 #include "lib_ascii.h"
+#include "lib_base64.h"
 
 #endif /* _LIB_LIB_H */
