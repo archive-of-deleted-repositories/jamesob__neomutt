@@ -34,7 +34,3 @@
 
 void (*mutt_error)(const char *, ...) = mutt_nocurses_error;
 
-void mutt_exit(int code)
-{
-  exit(code);
-}
