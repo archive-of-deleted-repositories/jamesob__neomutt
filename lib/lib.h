@@ -30,6 +30,7 @@
  *
  * -# @subpage ascii
  * -# @subpage base64
+ * -# @subpage date
  */
 
 #ifndef _LIB_LIB_H
@@ -37,5 +38,6 @@
 
 #include "lib_ascii.h"
 #include "lib_base64.h"
+#include "lib_date.h"
 
 #endif /* _LIB_LIB_H */
