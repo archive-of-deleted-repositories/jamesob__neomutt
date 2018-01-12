@@ -27,14 +27,6 @@
 
 struct Address;
 
-#define mutt_rfc2047_encode_32(a, b) mutt_rfc2047_encode(a, NULL, 32, b);
-
-char *mutt_rfc2047_choose_charset(const char *fromcode, const char *charsets,
-                                  char *u, size_t ulen, char **d, size_t *dlen);
-
-void mutt_rfc2047_encode(char **pd, const char *specials, int col, const char *charsets);
-void mutt_rfc2047_decode(char **pd);
-
 void rfc2047_encode_addrlist(struct Address *addr, const char *tag);
 void rfc2047_decode_addrlist(struct Address *a);
 
