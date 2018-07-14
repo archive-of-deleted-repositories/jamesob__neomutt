@@ -25,7 +25,12 @@
 #ifndef _EMAIL_RFC2047_H
 #define _EMAIL_RFC2047_H
 
-void mutt_rfc2047_decode(char **pd);
-void mutt_rfc2047_encode(char **pd, const char *specials, int col, const char *charsets);
+struct Address;
+
+void rfc2047_decode(char **pd);
+void rfc2047_encode(char **pd, const char *specials, int col, const char *charsets);
+
+void rfc2047_decode_addrlist(struct Address *a);
+void rfc2047_encode_addrlist(struct Address *addr, const char *tag);
 
 #endif /* _EMAIL_RFC2047_H */
