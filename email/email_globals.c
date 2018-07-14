@@ -27,5 +27,18 @@
  */
 
 #include "config.h"
+#include <stdbool.h>
+#include "mutt/mutt.h"
 
+/* Config items */
+bool MarkOld;
+struct Regex *ReplyRegex;
 char *SendCharset;
+char *SpamSeparator;
+bool Weed;
+
+/* Global variables */
+struct RegexList *NoSpamList;
+struct ReplaceList *SpamList;
+struct ListHead Ignore = STAILQ_HEAD_INITIALIZER(Ignore);
+struct ListHead UnIgnore = STAILQ_HEAD_INITIALIZER(UnIgnore);
