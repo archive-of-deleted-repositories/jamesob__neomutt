@@ -27,22 +27,22 @@
 
 void test_mutt_file_expand_fmt(void)
 {
-  // void mutt_file_expand_fmt(char *dest, size_t destlen, const char *fmt, const char *src);
+  // void mutt_file_expand_fmt(struct Buffer *dest, const char *fmt, const char *src);
 
   {
-    mutt_file_expand_fmt(NULL, 10, "apple", "banana");
-    TEST_CHECK_(1, "mutt_file_expand_fmt(NULL, 10, \"apple\", \"banana\")");
+    mutt_file_expand_fmt(NULL, "apple", "banana");
+    TEST_CHECK_(1, "mutt_file_expand_fmt(NULL, \"apple\", \"banana\")");
   }
 
   {
-    char buf[32] = { 0 };
-    mutt_file_expand_fmt(buf, sizeof(buf), NULL, "banana");
-    TEST_CHECK_(1, "mutt_file_expand_fmt(&buf, sizeof(buf), NULL, \"banana\")");
+    struct Buffer buf = { 0 };
+    mutt_file_expand_fmt(&buf, NULL, "banana");
+    TEST_CHECK_(1, "mutt_file_expand_fmt(&buf, NULL, \"banana\")");
   }
 
   {
-    char buf[32] = { 0 };
-    mutt_file_expand_fmt(buf, sizeof(buf), "apple", NULL);
-    TEST_CHECK_(1, "mutt_file_expand_fmt(&buf, sizeof(buf), \"apple\", NULL)");
+    struct Buffer buf = { 0 };
+    mutt_file_expand_fmt(&buf, "apple", NULL);
+    TEST_CHECK_(1, "mutt_file_expand_fmt(&buf, \"apple\", NULL)");
   }
 }
