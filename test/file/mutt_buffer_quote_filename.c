@@ -27,16 +27,16 @@
 
 void test_mutt_buffer_quote_filename(void)
 {
-  // void mutt_buffer_quote_filename(struct Buffer *buf, const char *filename)
+  // void mutt_buffer_quote_filename(struct Buffer *buf, const char *filename, bool add_outer)
 
   {
-    mutt_buffer_quote_filename(NULL, "apple");
-    TEST_CHECK_(1, "mutt_buffer_quote_filename(NULL, \"apple\")");
+    mutt_buffer_quote_filename(NULL, "apple", false);
+    TEST_CHECK_(1, "mutt_buffer_quote_filename(NULL, \"apple\", false)");
   }
 
   {
     struct Buffer buf = { 0 };
-    mutt_buffer_quote_filename(&buf, NULL);
-    TEST_CHECK_(1, "mutt_buffer_quote_filename(&buf, NULL)");
+    mutt_buffer_quote_filename(&buf, NULL, false);
+    TEST_CHECK_(1, "mutt_buffer_quote_filename(&buf, NULL, false)");
   }
 }
