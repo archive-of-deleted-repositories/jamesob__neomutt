@@ -32,6 +32,6 @@ void test_mutt_addrlist_dedupe(void)
 
   {
     mutt_addrlist_dedupe(NULL);
-    TEST_CHECK(true); // no crash
+    TEST_CHECK_(1, "mutt_addrlist_dedupe(NULL)");
   }
 }
