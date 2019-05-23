@@ -4,6 +4,7 @@
  *
  * @authors
  * Copyright (C) 2019 Richard Russon <rich@flatcap.org>
+ * Copyright (C) 2019 Pietro Cerutti <gahr@gahr.ch>
  *
  * @copyright
  * This program is free software: you can redistribute it and/or modify it under
@@ -31,7 +32,7 @@ void test_mutt_grouplist_remove_addrlist(void)
   // int mutt_grouplist_remove_addrlist(struct GroupList *head, struct Address *a);
 
   {
-    struct Address addr = { 0 };
+    struct AddressList addr = TAILQ_HEAD_INITIALIZER(addr);
     TEST_CHECK(mutt_grouplist_remove_addrlist(NULL, &addr) == -1);
   }
 

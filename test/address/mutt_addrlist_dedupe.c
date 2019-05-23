@@ -4,6 +4,7 @@
  *
  * @authors
  * Copyright (C) 2019 Richard Russon <rich@flatcap.org>
+ * Copyright (C) 2019 Pietro Cerutti <gahr@gahr.ch>
  *
  * @copyright
  * This program is free software: you can redistribute it and/or modify it under
@@ -25,12 +26,37 @@
 #include "config.h"
 #include "mutt/mutt.h"
 #include "address/lib.h"
+#include "common.h"
 
 void test_mutt_addrlist_dedupe(void)
 {
-  // struct Address *mutt_addrlist_dedupe(struct Address *addr);
+  // void mutt_addrlist_dedupe(struct AddressList *al);
 
   {
-    TEST_CHECK(!mutt_addrlist_dedupe(NULL));
+    mutt_addrlist_dedupe(NULL);
+    TEST_CHECK_(1, "mutt_addrlist_dedupe(NULL)");
+  }
+
+  {
+    struct AddressList al = TAILQ_HEAD_INITIALIZER(al);
+    int parsed = mutt_addrlist_parse(
+        &al,
+        "Name 1 <test@example.com>, john@doe.org, toast@example.com,"
+        "Another <test@example.com>, toast@bar.org, foo@bar.baz, john@doe.org");
+    TEST_CHECK(parsed == 7);
+    mutt_addrlist_dedupe(&al);
+    struct Address *a = TAILQ_FIRST(&al);
+    TEST_CHECK_STR_EQ("test@example.com", a->mailbox);
+    a = TAILQ_NEXT(a, entries);
+    TEST_CHECK_STR_EQ("john@doe.org", a->mailbox);
+    a = TAILQ_NEXT(a, entries);
+    TEST_CHECK_STR_EQ("toast@example.com", a->mailbox);
+    a = TAILQ_NEXT(a, entries);
+    TEST_CHECK_STR_EQ("toast@bar.org", a->mailbox);
+    a = TAILQ_NEXT(a, entries);
+    TEST_CHECK_STR_EQ("foo@bar.baz", a->mailbox);
+    a = TAILQ_NEXT(a, entries);
+    TEST_CHECK(a == NULL);
+    mutt_addrlist_clear(&al);
   }
 }
