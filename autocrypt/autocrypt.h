@@ -23,7 +23,12 @@
 #ifndef MUTT_AUTOCRYPT_AUTOCRYPT_H
 #define MUTT_AUTOCRYPT_AUTOCRYPT_H
 
-void mutt_autocrypt_init (void);
+#include <sqlite3.h>
+#include "where.h"
+
+WHERE sqlite3 *AutocryptDB;
+
+int mutt_autocrypt_init (int);
 void mutt_autocrypt_cleanup (void);
 
 #endif /* MUTT_AUTOCRYPT_AUTOCRYPT_H */
