@@ -29,4 +29,6 @@ void mutt_autocrypt_db_close(void);
 int mutt_autocrypt_schema_init(void);
 int mutt_autocrypt_schema_update(void);
 
+int mutt_autocrypt_gpgme_init(void);
+
 #endif /* MUTT_AUTOCRYPT_AUTOCRYPT_PRIVATE_H */
